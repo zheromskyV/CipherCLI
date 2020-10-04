@@ -1,0 +1,14 @@
+{
+  "name": "cipher-cli",
+  "version": "1.0.0",
+  "description": "Caesar cipher CLI tool",
+  "main": "caesar-cipher.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vladislav Zheromsky <vladislavzheromsky@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^6.1.0"
+  }
+}
