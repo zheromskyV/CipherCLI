@@ -15,7 +15,7 @@ function caesar(input, shift) {
   }
 
   if (shift < 0) {
-    shift += 26;
+    shift = shift % LETTERS_IN_ALPHABET + LETTERS_IN_ALPHABET;
   }
 
   let output = '';
