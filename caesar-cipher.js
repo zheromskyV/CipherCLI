@@ -20,7 +20,7 @@ validateOptions(shift, action, input, output, () => process.exit(1));
 pipeline(
   input ? fs.createReadStream(input) : process.stdin,
   new Transformer(action, shift),
-  output ? fs.createWriteStream(output) : process.stdout,
+  output ? fs.createWriteStream(output, { flags: 'a' }) : process.stdout,
   (err) => {
     if (err) {
       console.error('Pipeline failed.', err);
