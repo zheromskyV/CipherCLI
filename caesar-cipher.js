@@ -2,6 +2,7 @@ const program = require('commander');
 const { pipeline } = require('stream');
 const fs = require('fs');
 const Transformer = require('./src/transformer');
+const validateOptions = require('./src/validation');
 
 program
   .storeOptionsAsProperties(false)
@@ -14,15 +15,7 @@ program
 
 const { shift, action, input, output } = program.opts();
 
-if (shift === undefined || action === undefined) {
-  console.error('"shift" and "action" are required');
-  process.exit(1);
-}
-
-if (action !== 'encode' && action !== 'decode') {
-  console.error('"action" must be "encode" or "decode"');
-  process.exit(1);
-}
+validateOptions(shift, action, input, output, () => process.exit(1));
 
 pipeline(
   input ? fs.createReadStream(input) : process.stdin,
